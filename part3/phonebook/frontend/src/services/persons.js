@@ -1,6 +1,7 @@
 import axios from "axios"
 
-const personsInitURL = 'http://localhost:3001/persons'
+// const personsInitURL = 'http://localhost:3001/api/persons'
+const personsInitURL = '/api/persons'
 
 const createPersonOnBackend = (name, number) => {
   const newPhoneNumber = {
