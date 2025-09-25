@@ -1,0 +1,40 @@
+// Project-local debug tasks
+//
+// For more documentation on how to configure debug tasks,
+// see: https://zed.dev/docs/debugger
+[
+  {
+    "adapter": "JavaScript",
+    "label": "package.json > dev",
+    "request": "launch",
+    "type": "pwa-node",
+    "args": [
+      "run",
+      "dev"
+    ],
+    "cwd": "/Users/dimen61/Documents/courses/fullstack-open/exercise/fullstack-open/part3/demo",
+    "runtimeExecutable": "$ZED_CUSTOM_TYPESCRIPT_RUNNER",
+    "env": {},
+    "runtimeArgs": [
+      "--inspect-brk"
+    ],
+    "console": "integratedTerminal"
+  },
+  {
+    "adapter": "JavaScript",
+    "label": "package.json > test",
+    "request": "launch",
+    "type": "pwa-node",
+    "args": [
+      "run",
+      "test"
+    ],
+    "cwd": "/Users/dimen61/Documents/courses/fullstack-open/exercise/fullstack-open/part3/demo",
+    "runtimeExecutable": "$ZED_CUSTOM_TYPESCRIPT_RUNNER",
+    "env": {},
+    "runtimeArgs": [
+      "--inspect-brk"
+    ],
+    "console": "integratedTerminal"
+  }
+]

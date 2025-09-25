@@ -141,6 +141,10 @@ const NewAdder = ({ persons, setPersons, setNotificationMsg, setNotificationMsgS
                     `Information of ${person.name} has already been removed from server`
                   );
                   setPersons(persons.filter(p => p.id !== person.id));
+                } else if (error.response && error.response.status === 400) {
+                  setNotificationMsg(
+                    `Failed to update ${person.name}: ${error.response.data.error}`
+                  )
                 } else {
                   setNotificationMsg(`Failed to update ${person.name}`);
                 }
@@ -153,6 +157,10 @@ const NewAdder = ({ persons, setPersons, setNotificationMsg, setNotificationMsgS
         personService
           .createPersonOnBackend(newName, newNumber)
           .then((retPerson) => {
+            if (retPerson.error) {
+              console.error("Error creating person:", retPerson.error);
+            }
+
             setPersons(persons.concat(retPerson));
             setNewName("");
             setNewNumber("");
@@ -162,7 +170,14 @@ const NewAdder = ({ persons, setPersons, setNotificationMsg, setNotificationMsgS
           .catch((error) => {
             console.error("Error adding person:", error);
 
-            setNotificationMsg(`Failed to create ${newName}`);
+            if (error.response && error.response.status === 400) {
+              setNotificationMsg(
+                `Failed to update ${person.name}: ${error.response.data.error}`
+              )
+            } else {
+              setNotificationMsg(`Failed to create ${newName}`);
+            }
+
             setNotificationMsgStatus(MsgStatus.ERROR);
           });
       }
@@ -223,6 +238,18 @@ const App = () => {
       const timer = setTimeout(() => {
         setNotificationMsg(null);
       }, 1500);
+
+      personService
+        .getPersonsOnBackend()
+        .then((retPersons) => {
+          setPersons(retPersons);
+        })
+        .catch((error) => {
+          console.error("Error fetching persons:", error);
+
+          setNotificationMsgStatus(MsgStatus.ERROR);
+          setNotificationMsg(error);
+        });
 
       return () => {
         clearTimeout(timer);
