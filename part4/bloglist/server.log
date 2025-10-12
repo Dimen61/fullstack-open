@@ -1,0 +1,40 @@
+[dotenv@17.2.2] injecting env (4) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+Server running on port 3001
+connected to MongoDB
+Method: POST
+Path:   /api/blogs/
+Body:   {
+  title: 'UserExtractor Middleware Test',
+  author: 'Middleware Author',
+  url: 'https://userextractor-test.com',
+  likes: 20
+}
+---
+Method: POST
+Path:   /api/blogs/
+Body:   {
+  title: 'No Token Middleware Test',
+  author: 'No Token Author',
+  url: 'https://no-token-middleware.com',
+  likes: 8
+}
+---
+jwt must be provided
+Method: POST
+Path:   /api/blogs/
+Body:   {
+  title: 'Invalid Token Middleware Test',
+  author: 'Invalid Token Author',
+  url: 'https://invalid-token-middleware.com',
+  likes: 12
+}
+---
+invalid token
+Method: GET
+Path:   /api/users/
+Body:   undefined
+---
+Method: GET
+Path:   /api/blogs/
+Body:   undefined
+---
