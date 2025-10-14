@@ -1,0 +1,9 @@
+POST http://localhost:3001/api/blogs/ HTTP/1.1
+content-type: application/json
+
+{
+    "title": "What's the machine learning",
+    "author": "DM",
+    "url": "https://dm.io/docs/ML",
+    "likes": 10
+}

@@ -1,0 +1,66 @@
+### Missing username
+POST http://localhost:3001/api/users/ HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Test User",
+    "password": "password123"
+}
+
+###
+
+### Missing name
+POST http://localhost:3001/api/users/ HTTP/1.1
+content-type: application/json
+
+{
+    "username": "testuser2",
+    "password": "password123"
+}
+
+###
+
+### Missing password
+POST http://localhost:3001/api/users/ HTTP/1.1
+content-type: application/json
+
+{
+    "username": "testuser3",
+    "name": "Test User 3"
+}
+
+###
+
+### Empty username
+POST http://localhost:3001/api/users/ HTTP/1.1
+content-type: application/json
+
+{
+    "username": "",
+    "name": "Test User",
+    "password": "password123"
+}
+
+###
+
+### Empty name
+POST http://localhost:3001/api/users/ HTTP/1.1
+content-type: application/json
+
+{
+    "username": "testuser4",
+    "name": "",
+    "password": "password123"
+}
+
+###
+
+### Empty password
+POST http://localhost:3001/api/users/ HTTP/1.1
+content-type: application/json
+
+{
+    "username": "testuser5",
+    "name": "Test User 5",
+    "password": ""
+}
