@@ -7,9 +7,13 @@ const setToken = (newToken) => {
   token = `bearer ${newToken}`
 }
 
+const getToken = () => {
+  return token
+}
+
 const login = async (user) => {
   const response = await axios.post(baseUrl, user)
   return response.data
 }
 
-export default { login, setToken }
+export default { login, setToken, getToken }
