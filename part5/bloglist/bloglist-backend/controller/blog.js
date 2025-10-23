@@ -25,7 +25,8 @@ blogRouter.post('/', middleware.userExtractor, async (request, response) => {
   await creator.save()
 
   const result = await blog.save()
-  response.status(201).json(result)
+  const populatedResult = await result.populate('user', { username: 1, name: 1 })
+  response.status(201).json(populatedResult)
 })
 
 blogRouter.delete('/:id', middleware.userExtractor, async (request, response) => {

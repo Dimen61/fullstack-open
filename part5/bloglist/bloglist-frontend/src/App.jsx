@@ -47,6 +47,8 @@ const App = () => {
       setUsername('')
       setPassword('')
 
+      loginService.setToken(user.token)
+
       setMsg('successful login')
       setMsgStatus(MsgStatus.SUCCESS)
       setTimeout(() => {

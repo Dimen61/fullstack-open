@@ -35,7 +35,7 @@ const Blog = ({ blog, blogs, setBlogs, user }) => {
   }
 
   return (
-    <div style={blogStyle}>
+    <div style={blogStyle} className="blog-post">
       <div style={{ display: showDetails ? 'none' : '' }}>
         {blog.title} {blog.author}<button onClick={toggleDetails}>view</button>
       </div>

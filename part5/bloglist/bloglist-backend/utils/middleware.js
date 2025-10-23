@@ -12,7 +12,7 @@ const requestLogger = (request, response, next) => {
 }
 
 const tokenExtractor = (request, response, next) => {
-  const authorization = request.get('authorization')
+  const authorization = request.get('Authorization')
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     request.token = authorization.substring(7)
   }
@@ -21,6 +21,12 @@ const tokenExtractor = (request, response, next) => {
 }
 
 const userExtractor = (request, response, next) => {
+  if (!request.token) {
+    return response.status(401).json({
+      error: 'token missing or invalid'
+    })
+  }
+
   const decodedToken = jwt.verify(request.token, config.SECRET)
   if (!decodedToken || !decodedToken.id) {
     return response.status(401).json({
